@@ -12,14 +12,19 @@ const sampleData = [
 
 const Home = () => {
   return (
-    <div className="flex w-full justify-between">
-      {sampleData.map((data) => (
-        <div className="flex flex-col gap-3 items-center">
-          <div className="w-96 h-64 bg-neutral-400"></div>
-          <h2>{data.name}</h2>
-        </div>
-      ))}
-    </div>
+    <>
+      <h2 className="text-center mb-11 text-3xl font-semibold">
+        Choose a game to play!
+      </h2>
+      <div className="flex w-full justify-between">
+        {sampleData.map((data) => (
+          <div className="flex flex-col gap-3 items-center">
+            <div className="w-96 h-64 bg-neutral-400"></div>
+            <h2>{data.name}</h2>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
