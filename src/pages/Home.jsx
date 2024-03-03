@@ -20,16 +20,16 @@ const sampleData = [
 const Home = () => {
   return (
     <>
-      <h2 className="text-center mb-11 text-3xl font-semibold">
+      <h1 className="text-center mb-11 text-3xl font-semibold">
         Choose a game to play!
-      </h2>
+      </h1>
       <div className="flex w-full justify-between">
         {sampleData.map((data) => (
           <div className="flex flex-col gap-3 items-center cursor-pointer">
             <div className="w-96 h-auto">
               <img src={data.imageUrl} alt={data.name} />
             </div>
-            <h2>{data.name}</h2>
+            <h2 className="text-lg">{data.name}</h2>
           </div>
         ))}
       </div>
