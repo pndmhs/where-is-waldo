@@ -2,8 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="w-full bg-[#373937]">
-      <div className="max-w-screen-xl flex mx-auto py-5 mb-5 items-center">
+    <header className="w-full bg-[#373937] py-4">
+      <div className="max-w-screen-xl flex mx-auto items-center">
         <div className="mr-auto">
           <Link to="/" className="text-2xl font-bold text-[#EE2725]">
             Where's <span className="text-white">Waldo?</span>
