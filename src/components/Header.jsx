@@ -2,22 +2,24 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="w-full max-w-screen-xl flex mx-auto py-5 mb-5 items-center">
-      <div className="mr-auto">
-        <Link to="/" className="text-2xl font-bold">
-          Where's Waldo
-        </Link>
+    <header className="w-full bg-[#373937]">
+      <div className="max-w-screen-xl flex mx-auto py-5 mb-5 items-center">
+        <div className="mr-auto">
+          <Link to="/" className="text-2xl font-bold text-[#EE2725]">
+            Where's <span className="text-white">Waldo?</span>
+          </Link>
+        </div>
+        <nav>
+          <ul className="flex gap-7 font-medium">
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink>Leaderboard</NavLink>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul className="flex gap-7 font-medium">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink>Leaderboard</NavLink>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 };
