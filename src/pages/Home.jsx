@@ -1,21 +1,5 @@
-import beachThumbnail from "../assets/beach_sm.jpg";
-import skiSlopesThumbnail from "../assets/ski-slopes_sm.jpg";
-import trackAndFieldThumbnail from "../assets/track-and-field_sm.jpg";
-
-const sampleData = [
-  {
-    name: "Beach",
-    imageUrl: beachThumbnail,
-  },
-  {
-    name: "Track and Field",
-    imageUrl: trackAndFieldThumbnail,
-  },
-  {
-    name: "Ski Slopes",
-    imageUrl: skiSlopesThumbnail,
-  },
-];
+import { Link } from "react-router-dom";
+import gameImages from "../utils/images";
 
 const Home = () => {
   return (
@@ -24,13 +8,17 @@ const Home = () => {
         Choose a game to play!
       </h1>
       <div className="flex w-full justify-between">
-        {sampleData.map((data) => (
-          <div className="flex flex-col gap-3 items-center cursor-pointer">
+        {gameImages.map((data, index) => (
+          <Link
+            to={`/game/${data.route}`}
+            key={index}
+            className="flex flex-col gap-3 items-center"
+          >
             <div className="w-96 h-auto">
-              <img src={data.imageUrl} alt={data.name} />
+              <img src={data.thumbnail} alt={data.name} />
             </div>
             <h2 className="text-lg">{data.name}</h2>
-          </div>
+          </Link>
         ))}
       </div>
     </>
