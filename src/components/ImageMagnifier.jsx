@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ImageMagnifier = ({
   src,
@@ -11,6 +11,21 @@ const ImageMagnifier = ({
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.ctrlKey && event.key === "m") {
+        setShowMagnifier(!showMagnifier);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showMagnifier]);
+
   return (
     <div className="relative" onClick={handleClick}>
       <img
@@ -21,7 +36,7 @@ const ImageMagnifier = ({
           const elem = e.currentTarget;
           const { width, height } = elem.getBoundingClientRect();
           setSize([width, height]);
-          setShowMagnifier(true);
+          // setShowMagnifier(true);
         }}
         onMouseMove={(e) => {
           // update cursor position
@@ -42,7 +57,7 @@ const ImageMagnifier = ({
 
       {showMagnifier && (
         <div
-          className="absolute pointer-events-none border-2 border-neutral-400 opacity-100 bg-[#2A2B2A]"
+          className="absolute pointer-events-none border-2 border-neutral-400 opacity-100 bg-[#2A2B2A] rounded-full"
           style={{
             // set size of magnifier
             height: `${magnifierHeight}px`,
