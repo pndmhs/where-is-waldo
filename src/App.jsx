@@ -6,6 +6,7 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
+import Game from "./pages/Game";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main className="w-full max-w-screen-xl mx-auto mt-12">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/game/:name" element={<Game />} />
         </Routes>
       </main>
     </div>
