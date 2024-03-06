@@ -10,7 +10,7 @@ import Game from "./pages/Game";
 
 function App() {
   return (
-    <div className="bg-[#2A2B2A] text-white min-h-screen w-full font-inter">
+    <div className="bg-[#2A2B2A] text-white min-h-screen w-full font-inter overflow-x-hidden">
       <Header />
       <main className="w-full max-w-screen-xl mx-auto py-12 px-5 xl:px-0">
         <Routes>
