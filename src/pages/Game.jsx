@@ -12,13 +12,12 @@ const Game = () => {
   const game = gameImages.find((item) => item.route === name);
 
   const handleClick = (e) => {
-    console.log(`Coordinates: (${e.clientX}, ${e.clientY})`);
-
     const elem = e.currentTarget;
     const { top, left } = elem.getBoundingClientRect();
     const x = e.pageX - left - window.scrollX;
     const y = e.pageY - top - window.scrollY;
 
+    console.log(`Coordinates: (${x}, ${y})`);
     setCoordinate({ x, y });
     setShowTarget(true);
   };
