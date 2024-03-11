@@ -7,6 +7,7 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 import Game from "./pages/Game";
+import Leaderboard from "./pages/Leaderboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game/:name" element={<Game />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </main>
     </div>
