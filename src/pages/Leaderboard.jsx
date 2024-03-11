@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ScoreTable from "../components/ScoreTable";
+import LeaderboardButtons from "../components/LeaderboardButtons";
 
 const sampleScores = [
   {
@@ -16,18 +18,19 @@ const sampleScores = [
 ];
 
 const Leaderboard = () => {
+  const [activeButton, setActiveButton] = useState(0);
+
+  const handleClick = (buttonIndex) => {
+    setActiveButton(buttonIndex);
+  };
+
   return (
     <div className="w-full flex flex-col items-center gap-5">
       <h1 className="text-4xl">Leaderboard</h1>
-      <div className="flex gap-5">
-        <button className="bg-[#373937] px-3 py-2 rounded-md">Beach</button>
-        <button className="bg-[#373937] px-3 py-2 rounded-md">
-          Ski Slopes
-        </button>
-        <button className="bg-[#373937] px-3 py-2 rounded-md">
-          Track & Field
-        </button>
-      </div>
+      <LeaderboardButtons
+        activeButton={activeButton}
+        handleClick={handleClick}
+      />
       <ScoreTable data={sampleScores} />
     </div>
   );
