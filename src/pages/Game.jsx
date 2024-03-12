@@ -37,8 +37,19 @@ const Game = () => {
 
   return (
     <div className="w-full h-auto relative">
-      <ImageMagnifier src={game.image} handleClick={handleClick} />
-      {showTarget && <TargetSelect coordinate={coordinate} />}
+      {gameQuery.isLoading && <p>Loading...</p>}
+      {gameQuery.isError && <p>Error: {gameQuery.error}</p>}
+      {gameQuery.data && (
+        <>
+          <ImageMagnifier src={game.image} handleClick={handleClick} />
+          {showTarget && (
+            <TargetSelect
+              coordinate={coordinate}
+              target_characters={gameQuery.data.targets}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 };
