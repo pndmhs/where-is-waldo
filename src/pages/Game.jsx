@@ -3,11 +3,24 @@ import gameImages from "../utils/images";
 import ImageMagnifier from "../components/ImageMagnifier";
 import { useState } from "react";
 import TargetSelect from "../components/TargetSelect";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Game = () => {
   const { name } = useParams();
   const [coordinate, setCoordinate] = useState({ x: 0, y: 0 });
   const [showTarget, setShowTarget] = useState(false);
+
+  const gameQuery = useQuery({
+    queryKey: ["games"],
+    queryFn: async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/game/${name}`
+      );
+      console.log(response.data);
+      return response.data;
+    },
+  });
 
   const game = gameImages.find((item) => item.route === name);
 
