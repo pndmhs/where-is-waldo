@@ -1,4 +1,6 @@
-const TargetDropdown = ({ coordinate }) => {
+const TargetDropdown = ({ coordinate, target_characters }) => {
+  console.log(target_characters);
+
   return (
     <div
       className="absolute flex flex-col items-center gap-2 py-2 w-[80px] bg-[#EE2725] rounded-md text-white"
@@ -7,18 +9,16 @@ const TargetDropdown = ({ coordinate }) => {
         top: `${coordinate.y + 60 / 2}px`,
       }}
     >
-      <button className="border border-white w-10/12 py-1 rounded-md">
-        Waldo
-      </button>
-      <button className="border border-white w-10/12 py-1 rounded-md">
-        Wizard
-      </button>
-      <button className="border border-white w-10/12 py-1 rounded-md">
-        Odlaw
-      </button>
-      <button className="border border-white w-10/12 py-1 rounded-md">
-        Wanda
-      </button>
+      {target_characters.map((target, index) => (
+        <>
+          <button
+            key={index}
+            className="border border-white w-10/12 py-1 rounded-md"
+          >
+            {target}
+          </button>
+        </>
+      ))}
     </div>
   );
 };

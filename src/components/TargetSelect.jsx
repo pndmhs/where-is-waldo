@@ -1,6 +1,6 @@
 import TargetDropdown from "./TargetDropdown";
 
-const TargetSelect = ({ coordinate }) => {
+const TargetSelect = ({ coordinate, target_characters }) => {
   return (
     <>
       <div
@@ -10,7 +10,10 @@ const TargetSelect = ({ coordinate }) => {
           left: `${coordinate.x - 50 / 2}px`,
         }}
       ></div>
-      <TargetDropdown coordinate={coordinate} />
+      <TargetDropdown
+        coordinate={coordinate}
+        target_characters={target_characters}
+      />
     </>
   );
 };
