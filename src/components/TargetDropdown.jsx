@@ -1,5 +1,25 @@
-const TargetDropdown = ({ coordinate, target_characters }) => {
-  console.log(target_characters);
+import axios from "axios";
+
+const TargetDropdown = ({ coordinate, target_characters, game_name }) => {
+  const handleClick = async (target_character) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/game/${game_name}/targets`,
+        {
+          targets: [
+            {
+              character: target_character,
+              x: coordinate.x,
+              y: coordinate.y,
+            },
+          ],
+        }
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div
@@ -14,6 +34,7 @@ const TargetDropdown = ({ coordinate, target_characters }) => {
           <button
             key={index}
             className="border border-white w-10/12 py-1 rounded-md hover:bg-white hover:text-[#EE2725]"
+            onClick={() => handleClick(target)}
           >
             {target}
           </button>
