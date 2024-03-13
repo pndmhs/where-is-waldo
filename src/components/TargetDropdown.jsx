@@ -1,24 +1,34 @@
 import axios from "axios";
 
-const TargetDropdown = ({ coordinate, target_characters, game_name }) => {
+const TargetDropdown = ({
+  coordinate,
+  target_characters,
+  game_name,
+  hideTargetSelect,
+  correctTargets,
+  setCorrectTargets,
+}) => {
   const handleClick = async (target_character) => {
     try {
+      const selectedTarget = {
+        character: target_character,
+        x: coordinate.x,
+        y: coordinate.y,
+      };
+
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/game/${game_name}/targets`,
         {
-          targets: [
-            {
-              character: target_character,
-              x: coordinate.x,
-              y: coordinate.y,
-            },
-          ],
+          targets: [...correctTargets, selectedTarget],
         }
       );
       console.log(response.data);
+      setCorrectTargets([...correctTargets, selectedTarget]);
     } catch (err) {
       console.log(err);
     }
+
+    hideTargetSelect();
   };
 
   return (
@@ -30,15 +40,13 @@ const TargetDropdown = ({ coordinate, target_characters, game_name }) => {
       }}
     >
       {target_characters.map((target, index) => (
-        <>
-          <button
-            key={index}
-            className="border border-white w-10/12 py-1 rounded-md hover:bg-white hover:text-[#EE2725]"
-            onClick={() => handleClick(target)}
-          >
-            {target}
-          </button>
-        </>
+        <button
+          key={index}
+          className="border border-white w-10/12 py-1 rounded-md hover:bg-white hover:text-[#EE2725]"
+          onClick={() => handleClick(target)}
+        >
+          {target}
+        </button>
       ))}
     </div>
   );
