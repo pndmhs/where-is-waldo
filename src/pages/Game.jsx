@@ -5,11 +5,13 @@ import { useState } from "react";
 import TargetSelect from "../components/TargetSelect";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import CorrectTarget from "../components/CorrectTarget";
 
 const Game = () => {
   const { name } = useParams();
   const [coordinate, setCoordinate] = useState({ x: 0, y: 0 });
   const [showTarget, setShowTarget] = useState(false);
+  const [correctTargets, setCorrectTargets] = useState([]);
 
   const gameQuery = useQuery({
     queryKey: ["games"],
@@ -52,8 +54,14 @@ const Game = () => {
           coordinate={coordinate}
           target_characters={gameQuery.data.targets}
           game_name={name}
+          hideTargetSelect={() => setShowTarget(false)}
+          correctTargets={correctTargets}
+          setCorrectTargets={setCorrectTargets}
         />
       )}
+      {correctTargets.map((target, index) => (
+        <CorrectTarget key={index} coordinate={{ x: target.x, y: target.y }} />
+      ))}
     </div>
   );
 };
