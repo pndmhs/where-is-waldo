@@ -1,6 +1,13 @@
 import TargetDropdown from "./TargetDropdown";
 
-const TargetSelect = ({ coordinate, target_characters, game_name }) => {
+const TargetSelect = ({
+  coordinate,
+  target_characters,
+  game_name,
+  hideTargetSelect,
+  correctTargets,
+  setCorrectTargets,
+}) => {
   return (
     <>
       <div
@@ -14,6 +21,9 @@ const TargetSelect = ({ coordinate, target_characters, game_name }) => {
         coordinate={coordinate}
         target_characters={target_characters}
         game_name={game_name}
+        hideTargetSelect={hideTargetSelect}
+        correctTargets={correctTargets}
+        setCorrectTargets={setCorrectTargets}
       />
     </>
   );
