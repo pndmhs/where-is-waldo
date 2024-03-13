@@ -3,6 +3,7 @@ import { useState } from "react";
 const ImageMagnifier = ({
   src,
   handleClick,
+  onLoadImage,
   magnifierHeight = 100,
   magnifieWidth = 100,
   zoomLevel = 2,
@@ -16,6 +17,7 @@ const ImageMagnifier = ({
       <img
         src={src}
         className="w-full"
+        onLoad={onLoadImage}
         onMouseEnter={(e) => {
           // update image size and turn-on magnifier
           const elem = e.currentTarget;

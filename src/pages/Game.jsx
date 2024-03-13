@@ -20,6 +20,7 @@ const Game = () => {
       console.log(response.data);
       return response.data;
     },
+    enabled: false,
   });
 
   const game = gameImages.find((item) => item.route === name);
@@ -35,21 +36,23 @@ const Game = () => {
     setShowTarget(true);
   };
 
+  const handleImageLoad = () => {
+    gameQuery.refetch();
+  };
+
   return (
     <div className="w-full h-auto relative">
-      {gameQuery.isLoading && <p>Loading...</p>}
-      {gameQuery.isError && <p>Error: {gameQuery.error}</p>}
-      {gameQuery.data && (
-        <>
-          <ImageMagnifier src={game.image} handleClick={handleClick} />
-          {showTarget && (
-            <TargetSelect
-              coordinate={coordinate}
-              target_characters={gameQuery.data.targets}
-              game_name={name}
-            />
-          )}
-        </>
+      <ImageMagnifier
+        src={game.image}
+        handleClick={handleClick}
+        onLoadImage={handleImageLoad}
+      />
+      {showTarget && (
+        <TargetSelect
+          coordinate={coordinate}
+          target_characters={gameQuery.data.targets}
+          game_name={name}
+        />
       )}
     </div>
   );
