@@ -20,6 +20,7 @@ const Game = () => {
         `${import.meta.env.VITE_API_URL}/game/${name}`
       );
       console.log(response.data);
+      sessionStorage.setItem("token", JSON.stringify(response.data.token));
       return response.data;
     },
     enabled: false,
