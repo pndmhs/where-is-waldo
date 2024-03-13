@@ -20,6 +20,7 @@ const TargetDropdown = ({
         `${import.meta.env.VITE_API_URL}/game/${game_name}/targets`,
         {
           targets: [...correctTargets, selectedTarget],
+          token: JSON.parse(sessionStorage.getItem("token")),
         }
       );
       console.log(response.data);
