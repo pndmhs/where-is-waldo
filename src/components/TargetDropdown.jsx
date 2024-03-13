@@ -13,7 +13,7 @@ const TargetDropdown = ({ coordinate, target_characters }) => {
         <>
           <button
             key={index}
-            className="border border-white w-10/12 py-1 rounded-md"
+            className="border border-white w-10/12 py-1 rounded-md hover:bg-white hover:text-[#EE2725]"
           >
             {target}
           </button>
