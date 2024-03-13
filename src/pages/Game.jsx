@@ -46,6 +46,7 @@ const Game = () => {
             <TargetSelect
               coordinate={coordinate}
               target_characters={gameQuery.data.targets}
+              game_name={name}
             />
           )}
         </>
