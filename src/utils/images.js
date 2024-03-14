@@ -6,7 +6,7 @@ import beachImage from "../assets/game-images/beach.webp";
 import skiSlopesImage from "../assets/game-images/ski-slopes.webp";
 import trackAndFieldImage from "../assets/game-images/track-and-field.webp";
 
-const gameImages = [
+const games = [
   {
     name: "Beach",
     route: "beach",
@@ -27,4 +27,4 @@ const gameImages = [
   },
 ];
 
-export default gameImages;
+export default games;
