@@ -1,6 +1,4 @@
 const CorrectTarget = ({ coordinate }) => {
-  console.log(coordinate);
-
   return (
     <div
       className={`absolute w-[50px] h-[50px] rounded-full border-4 border-green-600`}

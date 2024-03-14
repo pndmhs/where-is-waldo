@@ -19,7 +19,6 @@ const Game = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/game/${name}`
       );
-      console.log(response.data);
       sessionStorage.setItem("token", JSON.stringify(response.data.token));
       return response.data;
     },
@@ -34,7 +33,6 @@ const Game = () => {
     const x = e.pageX - left - window.scrollX;
     const y = e.pageY - top - window.scrollY;
 
-    console.log(`Coordinates: (${x}, ${y})`);
     setCoordinate({ x, y });
     setShowTarget(true);
   };
