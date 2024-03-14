@@ -3,35 +3,8 @@ import axios from "axios";
 const TargetDropdown = ({
   coordinate,
   target_characters,
-  game_name,
-  hideTargetSelect,
-  correctTargets,
-  setCorrectTargets,
+  handleTargetClick,
 }) => {
-  const handleClick = async (target_character) => {
-    try {
-      const selectedTarget = {
-        character: target_character,
-        x: coordinate.x,
-        y: coordinate.y,
-      };
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/game/${game_name}/targets`,
-        {
-          targets: [...correctTargets, selectedTarget],
-          token: JSON.parse(sessionStorage.getItem("token")),
-        }
-      );
-      console.log(response.data);
-      setCorrectTargets([...correctTargets, selectedTarget]);
-    } catch (err) {
-      console.log(err);
-    }
-
-    hideTargetSelect();
-  };
-
   return (
     <div
       className="absolute flex flex-col items-center gap-2 py-2 w-[80px] bg-[#EE2725] rounded-md text-white"
@@ -44,7 +17,7 @@ const TargetDropdown = ({
         <button
           key={index}
           className="border border-white w-10/12 py-1 rounded-md hover:bg-white hover:text-[#EE2725]"
-          onClick={() => handleClick(target)}
+          onClick={() => handleTargetClick(target)}
         >
           {target}
         </button>
