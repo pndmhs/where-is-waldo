@@ -22,7 +22,7 @@ const ScoreModal = ({ time_score, game_name }) => {
           game_name,
         }
       );
-      console.log(response.data);
+      navigate("/leaderboard");
     } catch (err) {
       console.log(err);
     }
