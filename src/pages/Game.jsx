@@ -41,6 +41,30 @@ const Game = () => {
     gameQuery.refetch();
   };
 
+  const handleTargetClick = async (target_character) => {
+    try {
+      const selectedTarget = {
+        character: target_character,
+        x: coordinate.x,
+        y: coordinate.y,
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/game/${name}/targets`,
+        {
+          targets: [...correctTargets, selectedTarget],
+          token: JSON.parse(sessionStorage.getItem("token")),
+        }
+      );
+      console.log(response.data);
+      setCorrectTargets([...correctTargets, selectedTarget]);
+    } catch (err) {
+      console.log(err);
+    }
+
+    setShowTarget(false);
+  };
+
   return (
     <div className="w-full h-auto relative">
       <ImageMagnifier
@@ -52,10 +76,7 @@ const Game = () => {
         <TargetSelect
           coordinate={coordinate}
           target_characters={gameQuery.data.targets}
-          game_name={name}
-          hideTargetSelect={() => setShowTarget(false)}
-          correctTargets={correctTargets}
-          setCorrectTargets={setCorrectTargets}
+          handleTargetClick={handleTargetClick}
         />
       )}
       {correctTargets.map((target, index) => (
