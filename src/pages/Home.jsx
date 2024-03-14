@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import gameImages from "../utils/images";
+import games from "../utils/images";
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
         Choose a game to play!
       </h1>
       <div className="flex w-full justify-between">
-        {gameImages.map((data, index) => (
+        {games.map((data, index) => (
           <Link
             to={`/game/${data.route}`}
             key={index}

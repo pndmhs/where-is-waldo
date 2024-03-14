@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import gameImages from "../utils/images";
+import games from "../utils/images";
 import ImageMagnifier from "../components/ImageMagnifier";
 import { useState } from "react";
 import TargetSelect from "../components/TargetSelect";
@@ -27,7 +27,7 @@ const Game = () => {
     enabled: false,
   });
 
-  const game = gameImages.find((item) => item.route === name);
+  const game = games.find((item) => item.route === name);
 
   const handleClick = (e) => {
     const elem = e.currentTarget;
