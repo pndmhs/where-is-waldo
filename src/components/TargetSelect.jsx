@@ -1,13 +1,6 @@
 import TargetDropdown from "./TargetDropdown";
 
-const TargetSelect = ({
-  coordinate,
-  target_characters,
-  game_name,
-  hideTargetSelect,
-  correctTargets,
-  setCorrectTargets,
-}) => {
+const TargetSelect = ({ coordinate, target_characters, handleTargetClick }) => {
   return (
     <>
       <div
@@ -20,10 +13,7 @@ const TargetSelect = ({
       <TargetDropdown
         coordinate={coordinate}
         target_characters={target_characters}
-        game_name={game_name}
-        hideTargetSelect={hideTargetSelect}
-        correctTargets={correctTargets}
-        setCorrectTargets={setCorrectTargets}
+        handleTargetClick={handleTargetClick}
       />
     </>
   );
