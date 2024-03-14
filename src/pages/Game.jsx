@@ -89,7 +89,7 @@ const Game = () => {
         <CorrectTarget key={index} coordinate={{ x: target.x, y: target.y }} />
       ))}
 
-      {score && <ScoreModal time_score={score} />}
+      {score && <ScoreModal time_score={score} game_name={name} />}
     </div>
   );
 };
