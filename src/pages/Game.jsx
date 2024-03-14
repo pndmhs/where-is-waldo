@@ -6,12 +6,14 @@ import TargetSelect from "../components/TargetSelect";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import CorrectTarget from "../components/CorrectTarget";
+import ScoreModal from "../components/ScoreModal";
 
 const Game = () => {
   const { name } = useParams();
   const [coordinate, setCoordinate] = useState({ x: 0, y: 0 });
   const [showTarget, setShowTarget] = useState(false);
   const [correctTargets, setCorrectTargets] = useState([]);
+  const [score, setScore] = useState(null);
 
   const gameQuery = useQuery({
     queryKey: ["games"],
@@ -58,6 +60,10 @@ const Game = () => {
       );
       console.log(response.data);
       setCorrectTargets([...correctTargets, selectedTarget]);
+
+      if (response.data.finished) {
+        setScore(response.data.time_score.seconds);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -82,6 +88,8 @@ const Game = () => {
       {correctTargets.map((target, index) => (
         <CorrectTarget key={index} coordinate={{ x: target.x, y: target.y }} />
       ))}
+
+      {score && <ScoreModal time_score={score} />}
     </div>
   );
 };
