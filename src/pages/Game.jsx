@@ -58,7 +58,6 @@ const Game = () => {
           token: JSON.parse(sessionStorage.getItem("token")),
         }
       );
-      console.log(response.data);
       setCorrectTargets([...correctTargets, selectedTarget]);
 
       if (response.data.finished) {
