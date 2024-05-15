@@ -1,6 +1,7 @@
 # Where's Waldo
 
 This is a personal website project aimed at creating an interactive experience reminiscent of the classic "Where's Waldo" books. The project consists of both backend and frontend components, utilizing technologies like Express, MongoDB with Mongoose, React with Vite, and Tailwind CSS.
+You can play the game [here](https://where-is-waldo-922.pages.dev/)
 
 ## Frontend
 
